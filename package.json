@@ -1,0 +1,25 @@
+{
+  "name": "mern-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dnkc/mern-jobs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dnkc/mern-jobs/issues"
+  },
+  "homepage": "https://github.com/dnkc/mern-jobs#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}

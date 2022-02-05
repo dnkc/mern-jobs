@@ -11,11 +11,12 @@ import jobsRouter from "./routes/jobRoutes.js";
 import notFoundMiddleware from "./middleware/NotFound.js";
 import errorHandlerMiddleware from "./middleware/ErrorHandler.js";
 
+import "express-async-errors";
+
 const app = express();
 
 dotenv.config();
 app.use(express.json());
-import "express-async-errors";
 
 app.get("/", (req, res) => {
   res.send("Welcome!");

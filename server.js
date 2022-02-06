@@ -1,29 +1,33 @@
 import express from "express";
 import dotenv from "dotenv";
-
 //db and authenticate user
 import connectDB from "./db/connect.js";
-
 //routers
 import authRouter from "./routes/authRoutes.js";
 import jobsRouter from "./routes/jobRoutes.js";
 //middleware
 import notFoundMiddleware from "./middleware/NotFound.js";
 import errorHandlerMiddleware from "./middleware/ErrorHandler.js";
-
+import authenticateUser from "./middleware/auth.js";
 import "express-async-errors";
+import morgan from "morgan";
 
 const app = express();
 
 dotenv.config();
+
+if (process.env.NODE_ENV !== "production") {
+  app.use(morgan("dev"));
+}
+
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/api/v1", (req, res) => {
   res.send("Welcome!");
 });
 
 app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/jobs", jobsRouter);
+app.use("/api/v1/jobs", authenticateUser, jobsRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
